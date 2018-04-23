@@ -56,29 +56,30 @@ BASE_DIR=$PWD
 cd dep/
 
 # Get the name of the virtualenv tgz:
-VENV_TGZ=""
-for f in virtualenv*.tar.gz; do VENV_TGZ=$f; done
+VENV_TGZ="virtualenv-temp"
+#for f in virtualenv*.tar.gz; do VENV_TGZ=$f; done
 
 # Get the filename without the extension. This gives the expected name of the
 # resulting directory:
 VENV_DIR="${VENV_TGZ%*.tar.gz}"
 
-cp $VENV_TGZ /home/${USER_NAME}/$VENV_TGZ
+#cp $VENV_TGZ /home/${USER_NAME}/$VENV_TGZ
 
 cd /home/${USER_NAME}
 
 # Open VENV_TGZ:
-tar xzf $VENV_TGZ
+#tar xzf $VENV_TGZ
 
 # Create an initial virtual env at the home of $USER_NAME
-sudo -u ${USER_NAME} $PYTHON $VENV_DIR/virtualenv.py -p $PYTHON $ENV_NAME
+#sudo -u ${USER_NAME} $PYTHON $VENV_DIR/virtualenv.py -p $PYTHON $ENV_NAME
+sudo -u ${USER_NAME} virtualenv -p $PYTHON $ENV_NAME
 
 # Go back to dep/
 cd $BASE_DIR/dep
 
 # Remove the virtualenv dir and tgz. They are not needed anymore:
-rm -rf /home/${USER_NAME}/$VENV_DIR
-rm -rf /home/${USER_NAME}/$VENV_TGZ
+#rm -rf /home/${USER_NAME}/$VENV_DIR
+#rm -rf /home/${USER_NAME}/$VENV_TGZ
 
 cd /home/${USER_NAME}
 
