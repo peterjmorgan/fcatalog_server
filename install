@@ -56,12 +56,12 @@ BASE_DIR=$PWD
 cd dep/
 
 # Get the name of the virtualenv tgz:
-VENV_TGZ="virtualenv-temp"
+#VENV_TGZ="virtualenv-temp"
 #for f in virtualenv*.tar.gz; do VENV_TGZ=$f; done
 
 # Get the filename without the extension. This gives the expected name of the
 # resulting directory:
-VENV_DIR="${VENV_TGZ%*.tar.gz}"
+#VENV_DIR="${VENV_TGZ%*.tar.gz}"
 
 #cp $VENV_TGZ /home/${USER_NAME}/$VENV_TGZ
 
@@ -72,7 +72,9 @@ cd /home/${USER_NAME}
 
 # Create an initial virtual env at the home of $USER_NAME
 #sudo -u ${USER_NAME} $PYTHON $VENV_DIR/virtualenv.py -p $PYTHON $ENV_NAME
-sudo -u ${USER_NAME} virtualenv -p $PYTHON $ENV_NAME
+
+#sudo -u ${USER_NAME} virtualenv -p $PYTHON $ENV_NAME
+#virtualenv -p $PYTHON $ENV_NAME
 
 # Go back to dep/
 cd $BASE_DIR/dep
@@ -84,10 +86,12 @@ cd $BASE_DIR/dep
 cd /home/${USER_NAME}
 
 # Make a bin directory:
-sudo -u ${USER_NAME} mkdir -p bin/
+#sudo -u ${USER_NAME} mkdir -p bin/
+mkdir -p bin/
 
 # Make a log directory:
-sudo -u ${USER_NAME} mkdir -p log/
+#sudo -u ${USER_NAME} mkdir -p log/
+mkdir -p log/
 
 #######################################################
 # Install all python dependencies inside the virtualenv
@@ -95,15 +99,22 @@ sudo -u ${USER_NAME} mkdir -p log/
 
 # Copy dependencies:
 cp -R $BASE_DIR/dep /home/${USER_NAME}/dep
-sudo chown -R $USER_NAME:$USER_NAME /home/${USER_NAME}/dep
-
+#sudo chown -R $USER_NAME:$USER_NAME /home/${USER_NAME}/dep
+#chown -R $USER_NAME:$USER_NAME /home/${USER_NAME}
 
 echo "Installing python dependencies:"
 # Installs all python dependencies:
-sudo -H -u ${USER_NAME} $ENV_NAME/bin/pip install \
+#sudo -H -u ${USER_NAME} $ENV_NAME/bin/pip3 install \
 	--no-index \
 	--find-links /home/${USER_NAME}/dep/packages \
 	fcatalog
+	
+pip3 install \
+	--no-index \
+	--find-links /home/${USER_NAME}/dep/packages \
+	fcatalog
+
+chown -R $USER_NAME:$USER_NAME /home/${USER_NAME}
 
 # Dependencies and requirements.txt are no longer needed:
 rm -rf /home/${USER_NAME}/dep
