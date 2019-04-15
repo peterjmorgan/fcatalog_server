@@ -108,7 +108,9 @@ echo "Installing python dependencies:"
 #	--no-index \
 #	--find-links /home/${USER_NAME}/dep/packages \
 #	fcatalog
-	
+
+pip3 install -r requirements.txt
+
 pip3 install \
 	--no-index \
 	--find-links /home/${USER_NAME}/dep/packages \
