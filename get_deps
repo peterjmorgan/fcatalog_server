@@ -29,7 +29,7 @@ URL_BASE=https://pypi.python.org/packages/source/v/virtualenv
 #printf "\nDownloading virtualenv:\n\n"
 printf "\nInstalling virtualenv:\n\n"
 
-pip install virtualenv
+pip3 install virtualenv
 
 # Download virtualenv:
 #curl -O $URL_BASE/$VENV_TGZ
