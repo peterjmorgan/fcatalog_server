@@ -105,9 +105,9 @@ cp -R $BASE_DIR/dep /home/${USER_NAME}/dep
 echo "Installing python dependencies:"
 # Installs all python dependencies:
 #sudo -H -u ${USER_NAME} $ENV_NAME/bin/pip3 install \
-	--no-index \
-	--find-links /home/${USER_NAME}/dep/packages \
-	fcatalog
+#	--no-index \
+#	--find-links /home/${USER_NAME}/dep/packages \
+#	fcatalog
 	
 pip3 install \
 	--no-index \
