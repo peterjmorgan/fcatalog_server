@@ -129,6 +129,6 @@ sudo chown -R $USER_NAME:$USER_NAME /home/${USER_NAME}/bin/fcatalog_server
 cp -f ${BASE_DIR}/assets/fcatalog.conf /etc/init/fcatalog.conf
 # Reload upstart configuration:
 #initctl reload-configuration
-systemctl supervisor 
+ 
 
 set +e
